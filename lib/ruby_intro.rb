@@ -13,10 +13,15 @@ end
 
 def max_2_sum arr
   # YOUR CODE HERE
+  return 0 if arr.empty?
+  return arr[0] if arr.length() == 1
+  sor_arr = arr.sort{|a,b| b<=>a}
+  return sor_arr[0] + sor_arr[1]
 end
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
+  !!arr.uniq.combination(2).detect { |a, b| a + b == n }
 end
 
 # Part 2
