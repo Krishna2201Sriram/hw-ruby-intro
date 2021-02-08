@@ -44,17 +44,22 @@ end
 def binary_multiple_of_4? s
   # YOUR CODE HERE
   return false if s.empty?
-  if s.to_i(2) == 0
-    return false
-  elsif s.to_i(2) % 4 == 0
-    return true
-  else
-    return false
-  end
+  return true if /\A[01]+\z/.match(s) && s.to_i(2)%4 == 0
+	return false
 end
 
 # Part 3
 
 class BookInStock
 # YOUR CODE HERE
+  attr_accessor :price, :isbn
+  def initialize(isbn, price)
+	  raise ArgumentError if isbn.empty? or price <= 0
+	  @isbn = isbn
+	  @price = price
+	end
+	
+	def price_as_string
+	  "$" + '%.2f' % price.round(2)
+	end
 end
